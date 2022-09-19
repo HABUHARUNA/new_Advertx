@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block head %} 
+<title>Login</title>
+{% endblock %}
+
+
+
+{% block body %}
+<div class="content-section">
+  <form method="POST" action="{{ url_for('signup')}}">
+      {{ form.hidden_tag() }}
+      <fieldset class="form-group">
+          <legend class="border-bottom mb-4">Login</legend>
+              <div class="form-group">
+                  {{ form.email.label(class="form-control-label")}}
+
+                  {% if form.email.errors %}
+                      {{ form.email(class="form-control form-control-lg is-invalid")}}
+                      <div class="invalid-feedback">
+                          {% for error in form.email.errors%}
+                              <span>{{ error }}</span>
+                          {% endfor %}
+                      </div>
+                  {% else %}
+                      {{ form.email(class="form-control form-control-lg")}}
+                  {% endif %}     
+                  
+              </div>
+              <div class="form-group">
+                {{ form.password.label(class="form-control-label")}}
+                {% if form.password.errors %}
+                    {{ form.password(class="form-control form-control-lg is-invalid")}}
+                    <div class="invalid-feedback">
+                        {% for error in form.password.errors%}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.password(class="form-control form-control-lg")}}
+                {% endif %}     
+                
+            </div>
+            <div class="form-group">
+              {{ form.remember_me }}
+              {{form.remember_me.label}}
+          </div>
+
+      </fieldset>
+          <div class="form-group2">
+              {{ form.submit(class="btn btn-outline-info")}}
+          </div>
+
+  </form>
+        <p class="baba">Don't have an account? <a href="/signup">Signup</a> </p>  
+        <div class="social-icons-container">
+            <ul class="social-icon">
+                <li>
+                  <a href="http://www.twitter.com" target="_blank"
+                    ><ion-icon name="logo-twitter"></ion-icon>
+                  </a>
+                </li>
+                <li>
+                  <a href="http://www.instagram.com" target="_blank"
+                    ><ion-icon name="logo-instagram"></ion-icon
+                  ></a>
+                </li>
+                <li>
+                  <a href="http://www.facebook.com" target="_blank"
+                    ><ion-icon name="logo-facebook"></ion-icon
+                  ></a>
+                </li>
+        </div>
+      </form>
+    </div>
+</div>
+
+<script
+  type="module"
+  src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+></script>
+<script
+  nomodule
+  src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+></script>
+
+
+{% endblock %} 
